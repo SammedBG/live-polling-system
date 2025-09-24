@@ -1,0 +1,27 @@
+{
+  "name": "live-polling-system",
+  "version": "1.0.0",
+  "description": "A real-time polling system built with React frontend and Express.js + Socket.io backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "deploy:render": "echo 'Deploy backend to Render: https://dashboard.render.com/'",
+    "deploy:vercel": "echo 'Deploy frontend to Vercel: https://vercel.com/dashboard'"
+  },
+  "keywords": [
+    "polling",
+    "react",
+    "express",
+    "socket.io",
+    "real-time"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
