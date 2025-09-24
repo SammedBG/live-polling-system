@@ -30,7 +30,7 @@ A real-time polling system built with React frontend and Express.js + Socket.io 
 
 ## Project Structure
 
-\`\`\`
+```
 live-polling-system/
 ├── backend/
 │   ├── server.js          # Express server with Socket.io
@@ -45,43 +45,43 @@ live-polling-system/
     │   ├── index.js       # React entry point
     │   └── index.css      # Global styles
     └── package.json       # Frontend dependencies
-\`\`\`
+```
 
 ## Setup Instructions
 
 ### Backend Setup
 1. Navigate to the backend directory:
-   \`\`\`bash
+  ```bash
    cd backend
-   \`\`\`
+   ```
 
 2. Install dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Start the server:
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
    
    The server will run on http://localhost:5000
 
 ### Frontend Setup
 1. Navigate to the frontend directory:
-   \`\`\`bash
+   ```bash
    cd frontend
-   \`\`\`
+   ```
 
 2. Install dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Start the React app:
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
    
    The app will run on http://localhost:3000
 
