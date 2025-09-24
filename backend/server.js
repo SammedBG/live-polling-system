@@ -8,7 +8,7 @@ const server = http.createServer(app)
 const io = socketIo(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
-      ? [process.env.FRONTEND_URL, "https://your-vercel-app.vercel.app"]
+      ? [process.env.FRONTEND_URL, "https://live-polling-system-teal.vercel.app", /\.vercel\.app$/]
       : "http://localhost:3000",
     methods: ["GET", "POST"],
   },
@@ -17,7 +17,7 @@ const io = socketIo(server, {
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, "https://your-vercel-app.vercel.app"]
+    ? [process.env.FRONTEND_URL, "https://live-polling-system-teal.vercel.app", /\.vercel\.app$/]
     : "http://localhost:3000",
   credentials: true
 }))
