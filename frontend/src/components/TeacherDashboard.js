@@ -59,12 +59,6 @@ const TeacherDashboard = () => {
     setError("")
   }
 
-  const resetForm = () => {
-    setQuestion("")
-    setOptions(["", "", "", ""])
-    setTimeLimit(60)
-    setError("")
-  }
 
   const handleShowPollHistory = () => {
     setShowPollHistory(true)

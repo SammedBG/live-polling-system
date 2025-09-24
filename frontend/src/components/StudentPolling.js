@@ -1,14 +1,27 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import socketService from "../services/socket"
 import { setTimeRemaining, setSelectedOption, setHasAnswered } from "../store/pollSlice"
 
 const StudentPolling = () => {
   const dispatch = useDispatch()
-  const { currentPoll, timeRemaining, selectedOption } = useSelector((state) => state.poll)
+  const { currentPoll, timeRemaining } = useSelector((state) => state.poll)
   const [localSelectedOption, setLocalSelectedOption] = useState(null)
+
+  const handleSubmitAnswer = useCallback(() => {
+    if (localSelectedOption !== null) {
+      const socket = socketService.getSocket()
+      socket.emit("submit-answer", { optionIndex: localSelectedOption })
+      dispatch(setHasAnswered(true))
+    }
+  }, [localSelectedOption, dispatch])
+
+  const handleOptionSelect = (optionIndex) => {
+    setLocalSelectedOption(optionIndex)
+    dispatch(setSelectedOption(optionIndex))
+  }
 
   useEffect(() => {
     if (currentPoll) {
@@ -35,20 +48,7 @@ const StudentPolling = () => {
 
       return () => clearInterval(timer)
     }
-  }, [currentPoll, dispatch, localSelectedOption])
-
-  const handleOptionSelect = (optionIndex) => {
-    setLocalSelectedOption(optionIndex)
-    dispatch(setSelectedOption(optionIndex))
-  }
-
-  const handleSubmitAnswer = () => {
-    if (localSelectedOption !== null) {
-      const socket = socketService.getSocket()
-      socket.emit("submit-answer", { optionIndex: localSelectedOption })
-      dispatch(setHasAnswered(true))
-    }
-  }
+  }, [currentPoll, dispatch, localSelectedOption, handleSubmitAnswer])
 
   if (!currentPoll) return null
 
