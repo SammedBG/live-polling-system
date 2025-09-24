@@ -186,7 +186,6 @@ npm start
 
 #### Other Deployment Options
 See [DEPLOYMENT.md](DEPLOYMENT.md) for additional deployment methods:
-- Docker containerization
 - Cloud platform deployment (Heroku, Railway)
 - VPS deployment with Nginx
 - SSL/HTTPS setup
