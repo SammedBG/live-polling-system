@@ -4,24 +4,12 @@ This guide covers different deployment options for the Live Polling System.
 
 ## Prerequisites
 
-- Docker and Docker Compose installed
 - Node.js 18+ (for local development)
 - A hosting service (for production deployment)
 
 ## Local Development
 
-### Option 1: Docker Compose (Recommended)
-
-1. Clone the repository
-2. Run the following command in the project root:
-   ```bash
-   docker-compose up --build
-   ```
-3. Access the application at:
-   - Frontend: http://localhost
-   - Backend API: http://localhost:5000
-
-### Option 2: Manual Setup
+### Manual Setup
 
 #### Backend Setup
 ```bash
@@ -39,60 +27,11 @@ npm start
 
 ## Production Deployment
 
-### Option 1: Docker Compose on VPS
+### Option 1: Render + Vercel (Recommended)
 
-1. **Prepare your server:**
-   ```bash
-   # Update system
-   sudo apt update && sudo apt upgrade -y
-   
-   # Install Docker
-   curl -fsSL https://get.docker.com -o get-docker.sh
-   sh get-docker.sh
-   
-   # Install Docker Compose
-   sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-   sudo chmod +x /usr/local/bin/docker-compose
-   ```
+**Quick Setup**: See [setup-deployment.md](setup-deployment.md) for 5-minute deployment guide
 
-2. **Deploy the application:**
-   ```bash
-   # Clone repository
-   git clone <your-repo-url>
-   cd live-polling-system
-   
-   # Update environment variables for production
-   cp env.example .env
-   # Edit .env file with your production settings
-   
-   # Start the application
-   docker-compose up -d --build
-   ```
-
-3. **Configure reverse proxy (optional):**
-   ```bash
-   # Install Nginx
-   sudo apt install nginx
-   
-   # Create configuration
-   sudo nano /etc/nginx/sites-available/live-polling
-   ```
-   
-   Add the following configuration:
-   ```nginx
-   server {
-       listen 80;
-       server_name your-domain.com;
-       
-       location / {
-           proxy_pass http://localhost:80;
-           proxy_set_header Host $host;
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-           proxy_set_header X-Forwarded-Proto $scheme;
-       }
-   }
-   ```
+**Detailed Guide**: See [RENDER_VERCEL_DEPLOYMENT.md](RENDER_VERCEL_DEPLOYMENT.md) for complete instructions
 
 ### Option 2: Cloud Platform Deployment
 
